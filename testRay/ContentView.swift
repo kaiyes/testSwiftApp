@@ -6,6 +6,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 Text("Click It")
                     .fontWeight(.semibold)
@@ -14,18 +15,19 @@ struct ContentView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
             }
-
+            Spacer()
             HStack {
                 Text("1")
                 Slider(value: .constant(10))
                 Text("100")
             }
-
-                                            Button(action: {
-                                                print("yet")
-                                                self.isOpen = true
-                                            }) { Text("hit me")}
+            Spacer()
+            Button(action: {
+                print("yet")
+                self.isOpen = true
+            }) { Text("hit me") }
             // scores
+            Spacer()
             HStack {
                 Button(action: {
                     print("button start over")
@@ -40,7 +42,7 @@ struct ContentView: View {
                 Button(action: {
                     print("button info")
                 }) { Text("info") }
-            }
+            }.padding(.bottom, 20)
         }
     }
 }
