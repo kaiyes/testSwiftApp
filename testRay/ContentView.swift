@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State var isOpen: Bool = false
     @State var sliderValue: Double = 50
-    
+
     var body: some View {
         VStack {
             Spacer()
@@ -26,11 +26,11 @@ struct ContentView: View {
                 print("yet")
                 self.isOpen = true
             }) { Text("hit me") }
-                .alert(isPresented: $isOpen) {
-                    () -> Alert in
-                    return Alert (title: "slider value",
-                                  message: "value is \(self.sliderValue)", dismissButton: .default(Text("nice")))
-            }
+                .alert(isPresented: $isOpen) { () -> Alert in
+                    var roundedVal: Int = Int(self.sliderValue.rounded())
+                    return Alert(title: Text("slider value"),
+                                 message: Text("value is \(roundedVal)"), dismissButton: .default(Text("nice")))
+                }
             // scores
             Spacer()
             HStack {
@@ -39,7 +39,7 @@ struct ContentView: View {
                 }) { Text("Start Over") }
                 Spacer()
                 Text("Score:")
-                Text ("\(self.sliderValue)")
+                Text("\(self.sliderValue)")
                 Spacer()
                 Text("Round:")
                 Text("999")
