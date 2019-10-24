@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		175FFE17235F1E82008F02E5 /* testRay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = testRay.entitlements; sourceTree = "<group>"; };
 		17611953235B282E00CB95F6 /* testRay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testRay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17611956235B282E00CB95F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17611958235B282E00CB95F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		17611955235B282E00CB95F6 /* testRay */ = {
 			isa = PBXGroup;
 			children = (
+				175FFE17235F1E82008F02E5 /* testRay.entitlements */,
 				17611956235B282E00CB95F6 /* AppDelegate.swift */,
 				17611958235B282E00CB95F6 /* SceneDelegate.swift */,
 				1761195A235B282E00CB95F6 /* ContentView.swift */,
@@ -284,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = testRay/testRay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"testRay/Preview Content\"";
 				DEVELOPMENT_TEAM = BZNP4U656S;
@@ -295,6 +298,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testRay.testRay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = testRay/testRay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"testRay/Preview Content\"";
 				DEVELOPMENT_TEAM = BZNP4U656S;
@@ -315,6 +320,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testRay.testRay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
