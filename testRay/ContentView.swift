@@ -5,7 +5,7 @@ struct ContentView: View {
     @State var target: Int = Int.random(in: 1 ... 100)
     @State var totalScore: Int = 0
     @State var rounds: Int = 0
-    
+
 
     func currentScore() -> Int {
         let difference: Int
@@ -18,6 +18,14 @@ struct ContentView: View {
             difference = 0
         }
         return 100 - difference
+    }
+    
+    func startOver() -> Bool {
+        self.rounds = 0
+        self.totalScore = 0
+        self.target = Int.random(in: 1...100)
+        self.sliderValue = 50
+        return true
     }
 
     var body: some View {
@@ -48,7 +56,7 @@ struct ContentView: View {
             Spacer()
             HStack {
                 Button(action: {
-                    print("button start over")
+                    self.startOver()
                 }) { Text("Start Over") }
                 Text("Currnet Score:")
                 Text("\(currentScore())")
