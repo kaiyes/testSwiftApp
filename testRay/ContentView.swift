@@ -2,20 +2,22 @@ import SwiftUI
 
 struct ContentView: View {
     @State var sliderValue: Double = 50
-    @State var target: Int = Int.random(in: 1...100)
+    @State var target: Int = Int.random(in: 1 ... 100)
     @State var totalScore: Int = 0
+    @State var rounds: Int = 0
     
+
     func currentScore() -> Int {
         let difference: Int
-        let roundedVal = Int(self.sliderValue.rounded())
-        if self.target > roundedVal {
-            difference = self.target - roundedVal
-        } else if roundedVal > self.target {
-            difference = roundedVal - self.target
+        let roundedVal = Int(sliderValue.rounded())
+        if target > roundedVal {
+            difference = target - roundedVal
+        } else if roundedVal > target {
+            difference = roundedVal - target
         } else {
             difference = 0
         }
-        return 100-difference
+        return 100 - difference
     }
 
     var body: some View {
@@ -37,21 +39,25 @@ struct ContentView: View {
             }
             Spacer()
             Button(action: {
-                self.target = Int.random(in: 1...100)
+                self.target = Int.random(in: 1 ... 100)
+                self.totalScore += self.currentScore()
+                self.rounds += 1
             }) { Text("hit me") }
-               
+
             // scores
             Spacer()
             HStack {
                 Button(action: {
                     print("button start over")
                 }) { Text("Start Over") }
-                Spacer()
-                Text("Score:")
-                Text("\(self.sliderValue)")
+                Text("Currnet Score:")
+                Text("\(currentScore())")
+
+                Text("Total Score:")
+                Text("\(self.totalScore)")
                 Spacer()
                 Text("Round:")
-                Text("999")
+                Text("\(self.rounds)")
                 Spacer()
                 Button(action: {
                     print("button info")
