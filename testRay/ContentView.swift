@@ -1,8 +1,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isOpen: Bool = false
     @State var sliderValue: Double = 50
+    @State var target: Int = Int.random(in: 1...100)
+    @State var totalScore: Int = 0
+    
+    func currentScore() -> Int {
+        let difference: Int
+        let roundedVal = Int(self.sliderValue.rounded())
+        if self.target > roundedVal {
+            difference = self.target - roundedVal
+        } else if roundedVal > self.target {
+            difference = roundedVal - self.target
+        } else {
+            difference = 0
+        }
+        return 100-difference
+    }
 
     var body: some View {
         VStack {
@@ -11,7 +25,7 @@ struct ContentView: View {
                 Text("Click It")
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
-                Text("100")
+                Text("\(self.target)")
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
             }
@@ -23,14 +37,9 @@ struct ContentView: View {
             }
             Spacer()
             Button(action: {
-                print("yet")
-                self.isOpen = true
+                self.target = Int.random(in: 1...100)
             }) { Text("hit me") }
-                .alert(isPresented: $isOpen) { () -> Alert in
-                    var roundedVal: Int = Int(self.sliderValue.rounded())
-                    return Alert(title: Text("slider value"),
-                                 message: Text("value is \(roundedVal)"), dismissButton: .default(Text("nice")))
-                }
+               
             // scores
             Spacer()
             HStack {
