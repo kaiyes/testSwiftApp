@@ -5,6 +5,7 @@ struct ContentView: View {
     @State var target: Int = Int.random(in: 1 ... 100)
     @State var totalScore: Int = 0
     @State var rounds: Int = 0
+    @State var isRoundOver: Bool = false
 
 
     func currentScore() -> Int {
@@ -16,6 +17,9 @@ struct ContentView: View {
             difference = roundedVal - target
         } else {
             difference = 0
+        }
+        if self.isRoundOver {
+            
         }
         return 100 - difference
     }
@@ -58,9 +62,7 @@ struct ContentView: View {
                 Button(action: {
                     self.startOver()
                 }) { Text("Start Over") }
-                Text("Currnet Score:")
-                Text("\(currentScore())")
-
+                Spacer()
                 Text("Total Score:")
                 Text("\(self.totalScore)")
                 Spacer()
