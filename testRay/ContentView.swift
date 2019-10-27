@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var sliderValue: Double = 50
+    @State var sliderValue: Double = 50.0
     @State var target: Int = Int.random(in: 1 ... 100)
     @State var totalScore: Int = 0
     @State var rounds: Int = 0
@@ -9,27 +9,15 @@ struct ContentView: View {
 
 
     func currentScore() -> Int {
-        let difference: Int
-        let roundedVal = Int(sliderValue.rounded())
-        if target > roundedVal {
-            difference = target - roundedVal
-        } else if roundedVal > target {
-            difference = roundedVal - target
-        } else {
-            difference = 0
-        }
-        if self.isRoundOver {
-            
-        }
-        return 100 - difference
+        return 100 - abs(target - Int(sliderValue.rounded()))
     }
     
-    func startOver() -> Bool {
-        self.rounds = 0
-        self.totalScore = 0
-        self.target = Int.random(in: 1...100)
-        self.sliderValue = 50
-        return true
+    func startOver() -> Int {
+        rounds = 0
+        totalScore = 0
+        target = Int.random(in: 1...100)
+        sliderValue = 50
+        return 0
     }
 
     var body: some View {
@@ -39,7 +27,7 @@ struct ContentView: View {
                 Text("Click It")
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
-                Text("\(self.target)")
+                Text("\(target)")
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
             }
@@ -51,9 +39,9 @@ struct ContentView: View {
             }
             Spacer()
             Button(action: {
-                self.target = Int.random(in: 1 ... 100)
                 self.totalScore += self.currentScore()
                 self.rounds += 1
+                self.target = Int.random(in: 1 ... 100)
             }) { Text("hit me") }
 
             // scores
@@ -64,10 +52,11 @@ struct ContentView: View {
                 }) { Text("Start Over") }
                 Spacer()
                 Text("Total Score:")
-                Text("\(self.totalScore)")
+                Text("\(totalScore)")
+                Text("\(currentScore())")
                 Spacer()
                 Text("Round:")
-                Text("\(self.rounds)")
+                Text("\(rounds)")
                 Spacer()
                 Button(action: {
                     print("button info")
